@@ -31,17 +31,15 @@ EXTRACTED_CHANNELS = ["C3", "C4", "EOGL", "EOGR", "EMG"]
 eeg_filter = ButterworthFilter(order=2, fc=[0.3, 35], type="band")
 eog_filter = ButterworthFilter(order=2, fc=[0.3, 35], type="band")
 emg_filter = ButterworthFilter(order=4, fc=[10], type="highpass")
-signal_labels_json_path = Path("data/montage_code/shhs.json")
+signal_labels_json_path = Path("/home/s202283/code/EEG2Vec/montage_code.json")
 if signal_labels_json_path.exists():
     with open(signal_labels_json_path, "r") as (f):
         channel_dict = json.load(f)
-    # channel_categories = channel_dict["categories"]
-    channel_categories = ["C4"]
+    channel_categories = channel_dict["categories"]
+    # channel_categories = ["C4"]
 channel_filters = {
-    "C3": eeg_filter,
-    "C4": eeg_filter,
-    "EOGL": eog_filter,
-    "EOGR": eog_filter,
+    "EEG1": eeg_filter,
+    "EEG2": eeg_filter,
     "EMG": emg_filter,
 }
 
